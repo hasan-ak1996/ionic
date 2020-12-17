@@ -3,6 +3,11 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import firebase from 'firebase';
+const config = {
+  apiKey: "AIzaSyChqa0uVHU20AQ6em9t_F64Hj5wlWAWZZU",
+  databaseURL: 'https://realtimeangular-cb904-default-rtdb.firebaseio.com/'
+};
 
 @Component({
   selector: 'app-root',
@@ -16,6 +21,7 @@ export class AppComponent {
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    firebase.initializeApp(config);
   }
 
   initializeApp() {

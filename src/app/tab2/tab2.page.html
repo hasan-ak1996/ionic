@@ -1,17 +1,63 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Create Item
     </ion-title>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <form #form="ngForm" (ngSubmit)="form.valid && save()" >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          
+          <ion-item [class.ion-invalid]= "form.submitted && nameModel.hasError('required')"> 
+            <ion-label position="stacked">Item Name</ion-label>
+            <ion-input 
+            type="text"
+            name="name" 
+            required 
+            [(ngModel)]="item.name" 
+            ngControl="name"
+            #nameModel="ngModel" 
+            ></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col  size="6">
+          <ion-item>
+            <ion-label position="stacked">Price</ion-label>
+            <ion-input type="number" name="price" required  [(ngModel)]="item.price" ngControl="price"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Quantity</ion-label>
+            <ion-input type="number" name="quantity" required [(ngModel)]="item.quantity" ngControl="quantity"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col  size="6">
+          <ion-item>
+            <ion-label position="stacked">Total Price</ion-label>
+            <ion-input type="number" name="totalPrice" required  [(ngModel)]="item.totalPrice" ngControl="totalPrice"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+
+
+
+  
+  <ion-footer>
+      <ion-button color="primary"  type="submit">Save</ion-button>
+      <ion-button color="primary" (click)="dismiss()">close</ion-button>
+  </ion-footer>
+  
+</form>
+
+
 </ion-content>

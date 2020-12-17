@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="6"> 
+      <ion-item> 
+        <ion-label position="stacked">User Name</ion-label>
+        <ion-input 
+        type="text"
+        name="username" 
+        required 
+        [(ngModel)]="username" 
+        ngControl="username"
+        ></ion-input>
+      </ion-item>
+      <ion-button color="primary" (click)="login()">Create User</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6"> 
+      <ion-item> 
+        <ion-label position="stacked">Message</ion-label>
+        <ion-input 
+        type="text"
+        name="message" 
+        required 
+        [(ngModel)]="message" 
+        ngControl="message"
+        ></ion-input>
+      </ion-item>
+      <ion-button color="primary" (click)="sendMessage()">Send Message</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <ion-item *ngFor = "let chat of chats" lines="inset">
+      <ion-label color="primary">
+        <span class="msg-name" *ngIf="chat.username === username">Me</span>
+        <span class="msg-name" *ngIf="chat.username !== username">{{chat.username}}</span>
+        <p text-wrap>{{chat.message}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+
+
+
+
+
+
+</ion-content>
